@@ -1,15 +1,15 @@
 import numpy as np
 import cv2
-
+#defining the range of colors
 l = np.array([0, 120, 120], dtype=np.uint8)
 u = np.array([45, 200, 255], dtype=np.uint8) 
-
+#path of vedio
 video = cv2.VideoCapture(r'C:\Users\shrut\OneDrive\Desktop\data\vedio_1.mp4')
 print('Press q to quit')
 
 while True:  
-    grabbed, image_frame = video.read()  
-    hsv = cv2.cvtColor(image_frame, cv2.COLOR_BGR2HSV)  
+    grabbed, image_frame = video.read()  #vedio reading
+    hsv = cv2.cvtColor(image_frame, cv2.COLOR_BGR2HSV)  #conversion from BGR to HSV
     mask = cv2.inRange(hsv, l, u) 
 
     (countours, hierarchy) = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  
